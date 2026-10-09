@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import actionPlanData from '@/data/action_plan.json';
 
-export type Task = { id: string; title: string };
+export type Task = { id: string; title: string; description?: string; link?: string };
 
 type StreakData = {
   streak: number;

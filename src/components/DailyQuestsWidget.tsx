@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useDailyQuests } from '@/hooks/useDailyQuests';
-import { CheckCircle2, Circle } from 'lucide-react';
+import { CheckCircle2, Circle, ExternalLink } from 'lucide-react';
 
 export default function DailyQuestsWidget() {
   const { streak, tasks, completedTaskIds, toggleTask, mounted } = useDailyQuests();
@@ -55,26 +55,45 @@ export default function DailyQuestsWidget() {
               <button
                 key={task.id}
                 onClick={() => toggleTask(task.id)}
-                className={`w-full flex items-center gap-3 p-3 rounded-xl border transition-all text-left ${
+                className={`w-full flex items-start gap-3 p-3 rounded-xl border transition-all text-left ${
                   isCompleted
                     ? 'bg-blue-50/50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800/50'
                     : 'bg-white border-slate-100 hover:border-slate-300 dark:bg-slate-800 dark:border-slate-700 dark:hover:border-slate-600'
                 }`}
               >
                 {isCompleted ? (
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
                 ) : (
-                  <Circle className="w-5 h-5 text-slate-300 dark:text-slate-600 shrink-0" />
+                  <Circle className="w-5 h-5 text-slate-300 dark:text-slate-600 shrink-0 mt-0.5" />
                 )}
-                <span
-                  className={`text-sm font-medium ${
-                    isCompleted
-                      ? 'text-slate-500 line-through dark:text-slate-400'
-                      : 'text-slate-700 dark:text-slate-200'
-                  }`}
-                >
-                  {task.title}
-                </span>
+                <div className="flex-1">
+                  <span
+                    className={`block text-sm font-medium ${
+                      isCompleted
+                        ? 'text-slate-500 line-through dark:text-slate-400'
+                        : 'text-slate-700 dark:text-slate-200'
+                    }`}
+                  >
+                    {task.title}
+                  </span>
+                  {task.description && (
+                    <span className={`block text-xs mt-0.5 leading-relaxed ${isCompleted ? 'text-slate-400 dark:text-slate-500' : 'text-slate-500 dark:text-slate-400'}`}>
+                      {task.description}
+                    </span>
+                  )}
+                </div>
+                {task.link && (
+                  <a 
+                    href={task.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    onClick={(e) => e.stopPropagation()} 
+                    className="p-2 -mr-2 -mt-1 text-slate-400 hover:text-blue-500 transition-colors shrink-0"
+                    title="Mở tài liệu học"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
               </button>
             );
           })
