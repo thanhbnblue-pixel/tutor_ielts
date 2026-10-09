@@ -1,0 +1,11 @@
+{
+  "week1": {
+    "1": [ {"id": "w1-1-1", "title": "Học 50 từ vựng Anki"}, {"id": "w1-1-2", "title": "Làm 1 bài tập Grammar (Tenses)"}, {"id": "w1-1-3", "title": "Chép chính tả (Listening Part 1)"} ],
+    "2": [ {"id": "w1-2-1", "title": "Học 50 từ vựng Anki"}, {"id": "w1-2-2", "title": "Luyện nói Shadowing 15 phút"} ],
+    "3": [ {"id": "w1-3-1", "title": "Học 50 từ vựng Anki"}, {"id": "w1-3-2", "title": "Làm 1 bài Reading Passage 1"} ],
+    "4": [ {"id": "w1-4-1", "title": "Học 50 từ vựng Anki"}, {"id": "w1-4-2", "title": "Chép chính tả (Listening Part 2)"} ],
+    "5": [ {"id": "w1-5-1", "title": "Học 50 từ vựng Anki"}, {"id": "w1-5-2", "title": "Viết 1 đoạn Task 1 (Line Graph)"} ],
+    "6": [ {"id": "w1-6-1", "title": "Học 50 từ vựng Anki"}, {"id": "w1-6-2", "title": "Luyện nói IELTS Speaking Part 1"} ],
+    "0": [ {"id": "w1-0-1", "title": "Ôn tập toàn bộ từ vựng tuần"}, {"id": "w1-0-2", "title": "Thi thử 1 bài Mini-test"} ]
+  }
+}

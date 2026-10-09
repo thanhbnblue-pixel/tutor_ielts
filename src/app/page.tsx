@@ -9,6 +9,8 @@ import WritingEditor from '@/components/WritingEditor';
 import SpeakingExaminer from '@/components/SpeakingExaminer';
 import StatsDashboard from '@/components/StatsDashboard';
 import ProfilePage from '@/components/ProfilePage';
+import DailyQuestsWidget from '@/components/DailyQuestsWidget';
+import HeaderStreak from '@/components/HeaderStreak';
 
 export default function Home() {
   const [lang, setLang] = useState<Language>('vi');
@@ -88,7 +90,7 @@ export default function Home() {
           borderColor: 'var(--border-color)',
         }}
       >
-        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+          <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 shrink-0">
               <Bot className="w-6 h-6" />
@@ -102,11 +104,15 @@ export default function Home() {
               </span>
             </div>
           </div>
+          <HeaderStreak />
         </div>
       </header>
 
       {/* Main Container */}
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 pb-24 overflow-x-hidden">
+        {/* Widget Quests - Hiển thị ở tất cả các tab hoặc có thể tuỳ chỉnh tuỳ ý */}
+        <DailyQuestsWidget />
+        
         {activeTab === 'writing' && <WritingEditor lang={lang} slotId={activeSlot} />}
         {activeTab === 'speaking' && <SpeakingExaminer lang={lang} slotId={activeSlot} />}
         {activeTab === 'stats' && <StatsDashboard lang={lang} slotId={activeSlot} />}
