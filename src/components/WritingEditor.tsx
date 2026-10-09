@@ -25,6 +25,7 @@ import {
 } from '@/lib/storage';
 
 import { getProfiles } from '@/lib/storage';
+import { useDailyQuests } from '@/hooks/useDailyQuests';
 
 interface WritingEditorProps {
   lang: 'vi' | 'en';
@@ -76,13 +77,24 @@ export default function WritingEditor({ lang, slotId, onSubmissionSuccess }: Wri
   const [prompts, setPrompts] = useState<WritingPrompt[]>(DEFAULT_PROMPTS);
   const [selectedPrompt, setSelectedPrompt] = useState<WritingPrompt | null>(DEFAULT_PROMPTS[0]);
 
+  const { exam, markTaskCompleted, mounted } = useDailyQuests();
+
   useEffect(() => {
     const profiles = getProfiles();
     const myProfile = profiles.find(p => p.slot_id === slotId);
-    const exam = myProfile?.target_exam || 'ielts';
-    setTargetExam(exam);
-    // Removed curriculum dynamic loading to focus purely on the AI Tutor
+    const examTarget = myProfile?.target_exam || 'ielts';
+    setTargetExam(examTarget);
   }, [slotId]);
+
+  useEffect(() => {
+    if (mounted && exam?.writing) {
+      setPrompts([exam.writing, ...DEFAULT_PROMPTS]);
+      setSelectedPrompt(exam.writing);
+    } else {
+      setPrompts(DEFAULT_PROMPTS);
+      setSelectedPrompt(DEFAULT_PROMPTS[0]);
+    }
+  }, [exam, mounted]);
 
   const [essayText, setEssayText] = useState<string>('');
   const [blockPaste, setBlockPaste] = useState<boolean>(true);
@@ -231,6 +243,12 @@ export default function WritingEditor({ lang, slotId, onSubmissionSuccess }: Wri
       saveWritingSubmission(submission);
       setResult(submission);
       setActiveTab('diff');
+      
+      // Auto-complete daily quest if applicable
+      if (exam?.writing?.taskId && selectedPrompt?.id === exam.writing.id) {
+        markTaskCompleted(exam.writing.taskId);
+      }
+      
       if (onSubmissionSuccess) onSubmissionSuccess();
     } catch (err: unknown) {
       clearInterval(interval);
@@ -275,7 +293,8 @@ export default function WritingEditor({ lang, slotId, onSubmissionSuccess }: Wri
                 const found = prompts.find((p) => p.id === e.target.value);
                 if (found) setSelectedPrompt(found);
               }}
-              className="px-3 py-2 text-sm rounded-xl border bg-transparent font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+              disabled={!!exam?.writing}
+              className="px-3 py-2 text-sm rounded-xl border bg-transparent font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed"
               style={{ borderColor: 'var(--border-color)' }}
             >
               {prompts.map((p) => (

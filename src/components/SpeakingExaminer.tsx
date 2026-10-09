@@ -22,6 +22,7 @@ import { Language, t } from '@/lib/i18n';
 import { SpeakingSubmission } from '@/lib/storage';
 
 import { saveSpeakingSubmission, formatBandScore, getProfiles } from '@/lib/storage';
+import { useDailyQuests } from '@/hooks/useDailyQuests';
 
 interface SpeakingExaminerProps {
   lang: 'vi' | 'en';
@@ -62,13 +63,24 @@ export default function SpeakingExaminer({ lang, slotId, onSubmissionSuccess }: 
   const [topics, setTopics] = useState<SpeakingTopic[]>(DEFAULT_TOPICS);
   const [selectedTopic, setSelectedTopic] = useState<SpeakingTopic | null>(DEFAULT_TOPICS[0]);
 
+  const { exam, markTaskCompleted, mounted } = useDailyQuests();
+
   useEffect(() => {
     const profiles = getProfiles();
     const myProfile = profiles.find(p => p.slot_id === slotId);
-    const exam = myProfile?.target_exam || 'ielts';
-    setTargetExam(exam);
-    // Removed curriculum dynamic loading to focus purely on the AI Tutor
+    const examTarget = myProfile?.target_exam || 'ielts';
+    setTargetExam(examTarget);
   }, [slotId]);
+
+  useEffect(() => {
+    if (mounted && exam?.speaking) {
+      setTopics([exam.speaking, ...DEFAULT_TOPICS]);
+      setSelectedTopic(exam.speaking);
+    } else {
+      setTopics(DEFAULT_TOPICS);
+      setSelectedTopic(DEFAULT_TOPICS[0]);
+    }
+  }, [exam, mounted]);
 
 const [isRecording, setIsRecording] = useState<boolean>(false);
   const [recordSeconds, setRecordSeconds] = useState<number>(0);
@@ -289,6 +301,12 @@ const [isRecording, setIsRecording] = useState<boolean>(false);
 
       saveSpeakingSubmission(submission);
       setResult(submission);
+      
+      // Auto-complete daily quest if applicable
+      if (exam?.speaking?.taskId && selectedTopic?.id === exam.speaking.id) {
+        markTaskCompleted(exam.speaking.taskId);
+      }
+      
       if (onSubmissionSuccess) onSubmissionSuccess();
     } catch (err: unknown) {
       clearInterval(interval);
@@ -339,7 +357,8 @@ const [isRecording, setIsRecording] = useState<boolean>(false);
                 setApiError(null);
               }
             }}
-            className="px-3 py-2 text-sm rounded-xl border bg-transparent font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={!!exam?.speaking}
+            className="px-3 py-2 text-sm rounded-xl border bg-transparent font-medium cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed"
             style={{ borderColor: 'var(--border-color)' }}
           >
             {topics.map((t) => (

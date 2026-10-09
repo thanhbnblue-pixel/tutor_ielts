@@ -5,19 +5,22 @@ import { useDailyQuests } from '@/hooks/useDailyQuests';
 import { CheckCircle2, Circle, ExternalLink } from 'lucide-react';
 
 export default function DailyQuestsWidget() {
-  const { streak, tasks, completedTaskIds, toggleTask, mounted } = useDailyQuests();
+  const { streak, currentDay, tasks, completedTaskIds, toggleTask, mounted } = useDailyQuests();
 
   if (!mounted) return null;
 
   const progress = tasks.length > 0 ? Math.round((completedTaskIds.length / tasks.length) * 100) : 0;
   const isAllDone = progress === 100;
 
+  // Format currentDay (e.g., "day1" -> "Day 1")
+  const dayStr = currentDay.replace('day', 'Day ');
+
   return (
     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4 mb-6">
       <div className="flex items-center justify-between mb-3">
         <div>
           <h2 className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
-            Nhiệm vụ hôm nay
+            Nhiệm vụ {dayStr}
             {isAllDone && <span className="text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Hoàn thành!</span>}
           </h2>
           <p className="text-sm text-slate-500 dark:text-slate-400">Tiến độ: {progress}%</p>

@@ -1,37 +1,95 @@
 {
-  "week1": {
-    "1": [ 
-      {"id": "w1-1-1", "title": "Học 20 từ vựng Anki (Core 4000)", "description": "Ôn tập flashcard trên ứng dụng Anki để xây dựng nền tảng từ vựng.", "link": "https://apps.ankiweb.net/"}, 
-      {"id": "w1-1-2", "title": "Ngữ pháp: Hiện tại đơn (Present Simple)", "description": "Lý thuyết & Bài tập. Tập trung vào cách dùng s/es và mạo từ.", "link": "https://testenglish.com/grammar/"}, 
-      {"id": "w1-1-3", "title": "Chép chính tả (Listening Part 1)", "description": "Nghe chép chính tả 1 bài hội thoại ngắn để quen tai.", "link": "https://dailydictation.com/"} 
+  "day1": {
+    "tasks": [
+      {"id": "d1-1", "title": "Học 20 từ vựng Anki (Core 4000)", "description": "Ôn tập flashcard trên ứng dụng Anki để xây dựng nền tảng từ vựng.", "link": "https://apps.ankiweb.net/"},
+      {"id": "d1-2", "title": "Ngữ pháp: Hiện tại đơn (Present Simple)", "description": "Lý thuyết & Bài tập. Tập trung vào cách dùng s/es và mạo từ.", "link": "https://testenglish.com/grammar/"},
+      {"id": "d1-3", "title": "Chép chính tả (Listening Part 1)", "description": "Nghe chép chính tả 1 bài hội thoại ngắn để quen tai.", "link": "https://dailydictation.com/"}
     ],
-    "2": [ 
-      {"id": "w1-2-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."}, 
-      {"id": "w1-2-2", "title": "Ngữ pháp: Quá khứ đơn (Past Simple)", "description": "Ôn tập bất quy tắc và làm 1 bài tập trắc nghiệm."},
-      {"id": "w1-2-3", "title": "Tập viết: 5 câu giới thiệu bản thân", "description": "Dùng tính năng Writing của App Tutor để AI chấm lỗi."}
+    "exam": null
+  },
+  "day2": {
+    "tasks": [
+      {"id": "d2-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."},
+      {"id": "d2-2", "title": "Ngữ pháp: Quá khứ đơn (Past Simple)", "description": "Ôn tập bất quy tắc và làm 1 bài tập trắc nghiệm."},
+      {"id": "d2-exam-writing", "title": "Tập viết: 5 câu giới thiệu bản thân", "description": "Dùng tính năng Writing của App Tutor để AI chấm lỗi."}
     ],
-    "3": [ 
-      {"id": "w1-3-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."}, 
-      {"id": "w1-3-2", "title": "Ngữ pháp: Hiện tại hoàn thành", "description": "Phân biệt Present Perfect vs Past Simple.", "link": "https://testenglish.com/grammar/"},
-      {"id": "w1-3-3", "title": "Chép chính tả (Part 1)", "description": "Nghe chép chính tả 1 bài trên Dailydictation.", "link": "https://dailydictation.com/"}
+    "exam": {
+      "writing": {
+        "id": "day2-writing",
+        "type": 2,
+        "title": "Day 2: 5 câu giới thiệu bản thân",
+        "description": "Viết 5 câu giới thiệu bản thân, sử dụng Thì hiện tại đơn.",
+        "min_words": 50,
+        "taskId": "d2-exam-writing"
+      },
+      "speaking": null
+    }
+  },
+  "day3": {
+    "tasks": [
+      {"id": "d3-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."},
+      {"id": "d3-2", "title": "Ngữ pháp: Hiện tại hoàn thành", "description": "Phân biệt Present Perfect vs Past Simple.", "link": "https://testenglish.com/grammar/"},
+      {"id": "d3-3", "title": "Chép chính tả (Part 1)", "description": "Nghe chép chính tả 1 bài trên Dailydictation.", "link": "https://dailydictation.com/"}
     ],
-    "4": [ 
-      {"id": "w1-4-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."}, 
-      {"id": "w1-4-2", "title": "Ngữ pháp: Mạo từ A/An/The", "description": "Quy tắc dùng mạo từ cơ bản. Rất quan trọng cho Writing."},
-      {"id": "w1-4-3", "title": "Luyện nói Shadowing 15 phút", "description": "Bật 1 video TED/BBC, nghe và nhại lại theo tốc độ người bản xứ."}
+    "exam": null
+  },
+  "day4": {
+    "tasks": [
+      {"id": "d4-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."},
+      {"id": "d4-2", "title": "Ngữ pháp: Mạo từ A/An/The", "description": "Quy tắc dùng mạo từ cơ bản. Rất quan trọng cho Writing."},
+      {"id": "d4-exam-speaking", "title": "Luyện nói về thói quen", "description": "Mở tab Speaking và trả lời câu hỏi của Giám khảo AI."}
     ],
-    "5": [ 
-      {"id": "w1-5-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."}, 
-      {"id": "w1-5-2", "title": "Chép chính tả (Part 1)", "description": "Nghe chép chính tả 1 bài trên Dailydictation.", "link": "https://dailydictation.com/"},
-      {"id": "w1-5-3", "title": "Tập viết: 5 câu miêu tả thói quen", "description": "Dùng Hiện tại đơn, viết lên App Tutor để AI chấm."}
+    "exam": {
+      "writing": null,
+      "speaking": {
+        "id": "day4-speaking",
+        "topic": "Day 4: Daily Routine",
+        "question": "Can you describe your typical daily routine?",
+        "suggested_points": ["Morning habits", "Work/Study", "Evening relaxation"],
+        "taskId": "d4-exam-speaking"
+      }
+    }
+  },
+  "day5": {
+    "tasks": [
+      {"id": "d5-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."},
+      {"id": "d5-2", "title": "Chép chính tả (Part 1)", "description": "Nghe chép chính tả 1 bài trên Dailydictation.", "link": "https://dailydictation.com/"},
+      {"id": "d5-exam-writing", "title": "Tập viết: Miêu tả biểu đồ", "description": "Dùng tính năng Writing Task 1 của App Tutor để AI chấm."}
     ],
-    "6": [ 
-      {"id": "w1-6-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."}, 
-      {"id": "w1-6-2", "title": "Ôn tập Ngữ pháp Tuần 1", "description": "Review lại Hiện tại, Quá khứ, Hiện tại hoàn thành và Mạo từ."}
+    "exam": {
+      "writing": {
+        "id": "day5-writing",
+        "type": 1,
+        "title": "Day 5: IELTS Task 1",
+        "description": "The chart below shows the number of men and women in further education in Britain in three periods and whether they were studying full-time or part-time. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+        "min_words": 150,
+        "taskId": "d5-exam-writing"
+      },
+      "speaking": null
+    }
+  },
+  "day6": {
+    "tasks": [
+      {"id": "d6-1", "title": "Ôn Anki + 10 từ mới", "description": "Duy trì chuỗi học từ vựng mỗi ngày."},
+      {"id": "d6-2", "title": "Ôn tập Ngữ pháp Tuần 1", "description": "Review lại Hiện tại, Quá khứ, Hiện tại hoàn thành và Mạo từ."},
+      {"id": "d6-exam-speaking", "title": "Luyện nói IELTS Part 2", "description": "Mở tab Speaking để làm bài Part 2."}
     ],
-    "0": [ 
-      {"id": "w1-0-1", "title": "Ôn tập toàn bộ từ vựng Anki", "description": "Ngày chủ nhật xả hơi, chỉ ôn lại từ vựng cũ, không học từ mới."}, 
-      {"id": "w1-0-2", "title": "Giải trí bằng Tiếng Anh", "description": "Xem 1 bộ phim, nghe Podcast hoặc đọc báo thư giãn."} 
-    ]
+    "exam": {
+      "writing": null,
+      "speaking": {
+        "id": "day6-speaking",
+        "topic": "Day 6: A Memorable Trip",
+        "question": "Describe a memorable trip you took. You should say: where you went, who you went with, what you did, and explain why it was memorable.",
+        "suggested_points": ["Destination", "Companions", "Activities", "Feelings"],
+        "taskId": "d6-exam-speaking"
+      }
+    }
+  },
+  "day7": {
+    "tasks": [
+      {"id": "d7-1", "title": "Ôn tập toàn bộ từ vựng Anki", "description": "Ngày chủ nhật xả hơi, chỉ ôn lại từ vựng cũ, không học từ mới."},
+      {"id": "d7-2", "title": "Giải trí bằng Tiếng Anh", "description": "Xem 1 bộ phim, nghe Podcast hoặc đọc báo thư giãn."}
+    ],
+    "exam": null
   }
 }
