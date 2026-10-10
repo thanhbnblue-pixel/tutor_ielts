@@ -11,9 +11,10 @@ interface ProfilePageProps {
   lang: Language;
   onSlotChange: (id: number) => void;
   onLangToggle: () => void;
+  onStartQuiz: () => void;
 }
 
-export default function ProfilePage({ lang, onSlotChange, onLangToggle }: ProfilePageProps) {
+export default function ProfilePage({ lang, onSlotChange, onLangToggle, onStartQuiz }: ProfilePageProps) {
   const [soundEnabled, setSoundEnabled] = React.useState(sounds.isEnabled());
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -120,6 +121,19 @@ export default function ProfilePage({ lang, onSlotChange, onLangToggle }: Profil
               </button>
             </div>
           </div>
+        </div>
+
+        <div className="h-px bg-slate-100 dark:bg-slate-700 w-full" />
+
+        <div>
+          <h3 className="font-bold text-lg mb-4 text-slate-700 dark:text-slate-300">Adaptive Testing</h3>
+          <p className="text-sm text-slate-500 mb-4">Take a quick test to automatically adjust your learning path based on your current level.</p>
+          <button 
+            onClick={onStartQuiz}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-xl font-bold hover:bg-green-200 transition-colors"
+          >
+            Take Level Test
+          </button>
         </div>
 
         <div className="h-px bg-slate-100 dark:bg-slate-700 w-full" />

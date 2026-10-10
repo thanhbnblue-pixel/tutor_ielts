@@ -11,11 +11,12 @@ import StatsDashboard from '@/components/StatsDashboard';
 import ProfilePage from '@/components/ProfilePage';
 import DailyQuestsWidget from '@/components/DailyQuestsWidget';
 import HeaderStreak from '@/components/HeaderStreak';
+import QuizInterface from '@/components/QuizInterface';
 
 export default function Home() {
   const [lang, setLang] = useState<Language>('vi');
   const [activeSlot, setActiveSlot] = useState<number>(1);
-  const [activeTab, setActiveTab] = useState<'writing' | 'speaking' | 'stats' | 'profile'>('writing');
+  const [activeTab, setActiveTab] = useState<'writing' | 'speaking' | 'stats' | 'profile' | 'quiz'>('writing');
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function Home() {
     if (savedLang === 'vi' || savedLang === 'en') setLang(savedLang);
 
     const savedTab = localStorage.getItem('ielts_ai_tutor_tab') as any;
-    if (savedTab && ['writing', 'speaking', 'stats', 'profile'].includes(savedTab)) {
+    if (savedTab && ['writing', 'speaking', 'stats', 'profile', 'quiz'].includes(savedTab)) {
       setActiveTab(savedTab);
     }
 
@@ -116,7 +117,15 @@ export default function Home() {
         {activeTab === 'writing' && <WritingEditor lang={lang} slotId={activeSlot} />}
         {activeTab === 'speaking' && <SpeakingExaminer lang={lang} slotId={activeSlot} />}
         {activeTab === 'stats' && <StatsDashboard lang={lang} slotId={activeSlot} />}
-        {activeTab === 'profile' && <ProfilePage lang={lang} onSlotChange={setActiveSlot} onLangToggle={toggleLang} />}
+        {activeTab === 'profile' && (
+          <ProfilePage 
+            lang={lang} 
+            onSlotChange={setActiveSlot} 
+            onLangToggle={toggleLang} 
+            onStartQuiz={() => handleTabChange('quiz')}
+          />
+        )}
+        {activeTab === 'quiz' && <QuizInterface onComplete={() => handleTabChange('profile')} />}
       </main>
 
       {/* Desktop/Tablet Sidebar / Mobile Bottom Nav replacement */}

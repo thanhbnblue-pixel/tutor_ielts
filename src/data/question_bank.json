@@ -1,0 +1,37 @@
+[
+  {
+    "id": "q1",
+    "level": "A1",
+    "text": "What _____ your name?",
+    "options": ["are", "is", "am", "be"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "q2",
+    "level": "A2",
+    "text": "I _____ to the cinema yesterday.",
+    "options": ["go", "going", "went", "gone"],
+    "correctAnswer": 2
+  },
+  {
+    "id": "q3",
+    "level": "B1",
+    "text": "If I _____ rich, I would buy a big house.",
+    "options": ["am", "will be", "was", "were"],
+    "correctAnswer": 3
+  },
+  {
+    "id": "q4",
+    "level": "B2",
+    "text": "By the time we arrive, the movie _____.",
+    "options": ["will start", "will have started", "started", "has started"],
+    "correctAnswer": 1
+  },
+  {
+    "id": "q5",
+    "level": "C1",
+    "text": "Not until he received the letter _____ the truth.",
+    "options": ["he knew", "did he know", "he knows", "does he know"],
+    "correctAnswer": 1
+  }
+]
